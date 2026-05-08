@@ -15,7 +15,9 @@ public class SlotMachineManager : MonoBehaviour
     IEnumerator SpinRoutine()
     {
         yield return StartCoroutine(reel1.Spin());
+
         yield return StartCoroutine(reel2.Spin());
+
         yield return StartCoroutine(reel3.Spin());
 
         CheckWin();
@@ -23,11 +25,10 @@ public class SlotMachineManager : MonoBehaviour
 
     void CheckWin()
     {
-        int r1 = Random.Range(0, 5);
-        int r2 = Random.Range(0, 5);
-        int r3 = Random.Range(0, 5);
-
-        if (r1 == r2 && r2 == r3)
+        if (reel1.resultIndex ==
+            reel2.resultIndex &&
+            reel2.resultIndex ==
+            reel3.resultIndex)
         {
             Debug.Log("WIN!");
         }
